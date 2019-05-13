@@ -96,6 +96,9 @@ textarea.form-controls {
     width: 50%;
 }
 
+.menu-item {
+    text-align: center;
+}
 .menu-item:hover {
     background-color:#ed9c28;
     border-color:#d58512
