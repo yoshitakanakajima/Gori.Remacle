@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Remacle | 顧客管理</title>
+
+    <link rel="import" href="common/style.html">
+    <link rel="import" href="common/script.html">
+</head>
+<body>
+<div id="header-outer"></div>
+
+<div class="search">
+    <div class="side" style="width: 45%">
+        <fieldset>
+            <div class="control-group">
+                <label class="sr-only" for="keyword">検索条件</label>
+                <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search">
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">検索</button>
+        </fieldset>
+        <fieldset>
+            <table id="customer-list" class="datatables display">
+                <thead>
+                    <tr>
+                        <th>顧客番号</th>
+                        <th>姓名</th>
+                        <th>電話番号</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>000001</td>
+                        <td>山田  太郎</td>
+                        <td>090-0000-0000</td>
+                    </tr>
+                    <tr>
+                        <td>000002</td>
+                        <td>山田  次郎</td>
+                        <td>080-0000-0000</td>
+                    </tr>
+                    <tr>
+                        <td>000003</td>
+                        <td>山田  三郎</td>
+                        <td>070-0000-0000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <fieldset style="text-align: right">
+            <button type="submit" class="btn btn-primary btn-lg">連続登録</button>
+        </fieldset>
+    </div>
+    <div class="side" style="width: 15%; text-align: center; margin-top: 30px;">
+        <img src="img/icon/customer-icon.png" width="120px">
+    </div>
+    <div class="side" style="width: 40%">
+        <form action="#">
+            <fieldset>
+                <div class="form-group col-sm-12">
+                    <label for="customer-key">顧客番号</label>
+                    <input type="text" class="controls" id="customer-key" placeholder="">
+                </div>
+                <div class="form-group col-sm-5">
+                    <label for="customer-name-kana-sei">姓（かな）</label>
+                    <input type="text" class="form-controls" id="customer-name-kana-sei" placeholder="">
+                </div>
+                <div class="form-group col-sm-5">
+                    <label for="customer-name-kana-mei">名（かな）</label>
+                    <input type="text" class="form-controls" id="customer-name-kana-mei" placeholder="">
+                </div>
+                <div class="form-group col-sm-5">
+                    <label for="customer-name-sei">姓</label>
+                    <input type="text" class="form-controls" id="customer-name-sei" placeholder="">
+                </div>
+                <div class="form-group col-sm-5">
+                    <label for="customer-name-mei">名</label>
+                    <input type="text" class="form-controls" id="customer-name-mei" placeholder="">
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="customer-mobile-no">電話番号</label>
+                    <input type="text" class="form-controls" id="customer-mobile-no" placeholder="">
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="customer-address">住所</label>
+                    <input type="text" class="form-controls" id="customer-address" placeholder="">
+                </div>
+                <div class="form-group col-sm-12">
+                    <label for="customer-remarks">備考</label>
+                    <textarea id="customer-remarks" class="form-controls" placeholder="" rows="3"></textarea>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="contents">
+    <fieldset class="col-sm-12 center">
+        <div class="inline-block">
+            <button type="submit" class="btn btn-primary btn-lg">追加</button>
+        </div>
+        <div class="inline-block">
+            <button type="submit" class="btn btn-primary btn-lg">削除</button>
+        </div>
+        <div class="inline-block">
+            <button type="submit" class="btn btn-primary btn-lg">クリア</button>
+        </div>
+    </fieldset>
+</div>
+
+<div id="footer-outer"></div>
+</body>
+</html>

@@ -1,0 +1,6 @@
+table.dataTable.no-footer {
+    border: 1px #CCCCCC solid;
+}
+.dataTables_paginate {
+    padding-bottom: 0.5em;
+}
