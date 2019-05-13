@@ -55,35 +55,57 @@
         <img src="img/icon/customer-icon.png" width="120px">
     </div>
     <div class="side" style="width: 40%">
-        <form action="#">
+        <form action="#" data-parsley-validate>
             <fieldset>
                 <div class="form-group col-sm-12">
                     <label for="customer-key">顧客番号</label>
-                    <input type="text" class="controls" id="customer-key" placeholder="">
+                    <input type="text" class="controls" id="customer-key" placeholder=""
+                           maxlength="40"
+                           data-parsley-maxlength="40"
+                           data-parsley-trigger="keyup focusout change input"
+                           required data-parsley-error-message="顧客番号を入力してください"
+                           data-parsley-required>
                 </div>
                 <div class="form-group col-sm-5">
                     <label for="customer-name-kana-sei">姓（かな）</label>
-                    <input type="text" class="form-controls" id="customer-name-kana-sei" placeholder="">
+                    <input type="text" class="form-controls" id="customer-name-kana-sei" placeholder=""
+                           maxlength="25"
+                           data-parsley-maxlength="25">
                 </div>
                 <div class="form-group col-sm-5">
                     <label for="customer-name-kana-mei">名（かな）</label>
-                    <input type="text" class="form-controls" id="customer-name-kana-mei" placeholder="">
+                    <input type="text" class="form-controls" id="customer-name-kana-mei" placeholder=""
+                           maxlength="25"
+                           data-parsley-maxlength="25">
                 </div>
                 <div class="form-group col-sm-5">
                     <label for="customer-name-sei">姓</label>
-                    <input type="text" class="form-controls" id="customer-name-sei" placeholder="">
+                    <input type="text" class="form-controls" id="customer-name-sei" placeholder=""
+                           maxlength="15"
+                           data-parsley-maxlength="15"
+                           required data-parsley-error-message="姓を入力してください"
+                           data-parsley-required>
                 </div>
                 <div class="form-group col-sm-5">
                     <label for="customer-name-mei">名</label>
-                    <input type="text" class="form-controls" id="customer-name-mei" placeholder="">
+                    <input type="text" class="form-controls" id="customer-name-mei" placeholder=""
+                           maxlength="15"
+                           data-parsley-maxlength="15"
+                           required data-parsley-error-message="名を入力してください"
+                           data-parsley-required>
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="customer-mobile-no">電話番号</label>
-                    <input type="text" class="form-controls" id="customer-mobile-no" placeholder="">
+                    <input type="text" class="form-controls" id="customer-mobile-no" placeholder=""
+                           data-parsley-type="digits"
+                           required data-parsley-error-message="電話番号を入力してください"
+                           data-parsley-required>
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="customer-address">住所</label>
-                    <input type="text" class="form-controls" id="customer-address" placeholder="">
+                    <input type="text" class="form-controls" id="customer-address" placeholder=""
+                           maxlength="100"
+                           data-parsley-maxlength="100">
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="customer-remarks">備考</label>

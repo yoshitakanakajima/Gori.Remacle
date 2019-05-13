@@ -1,0 +1,12 @@
+.parsley-error {
+    background: #ffe4e4;
+}
+
+.parsley-errors-list {
+    color: red;
+    padding-inline-start: 0px;
+}
+
+li {
+    text-align: left;
+}
