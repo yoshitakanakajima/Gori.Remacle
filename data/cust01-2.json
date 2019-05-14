@@ -21,7 +21,7 @@
     "customer_name_mei_list": "次郎",
     "customer_address_list": "神奈川県茅ヶ崎市茅ヶ崎2019-5",
     "customer_remarks_list": "なし",
-    "transmission_error_flg_list": "1"
+    "transmission_error_flg_list": "0"
   },
   {
     "customer_key_list": "000003",
@@ -141,7 +141,7 @@
     "customer_name_mei_list": "一郎",
     "customer_address_list": "神奈川県茅ヶ崎市十間坂2019-5",
     "customer_remarks_list": "なし",
-    "transmission_error_flg_list": "0"
+    "transmission_error_flg_list": "1"
   }
 
 ]

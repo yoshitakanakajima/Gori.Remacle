@@ -17,7 +17,7 @@
                 <label class="sr-only" for="keyword">検索条件</label>
                 <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search">
             </div>
-            <button type="submit" class="btn btn-primary btn-lg">検索</button>
+            <button id="customer-search" type="submit" class="btn btn-primary btn-lg">検索</button>
         </fieldset>
         <fieldset>
             <table id="customer-list" class="datatables display">
@@ -45,7 +45,7 @@
         <img src="img/icon/customer-icon.png" width="120px">
     </div>
     <div class="side" style="width: 40%">
-        <form action="#" data-parsley-validate>
+        <form id="customer-form" action="#" data-parsley-validate>
             <fieldset>
                 <div class="form-group col-sm-12">
                     <label for="customer-key">顧客番号</label>
@@ -97,6 +97,9 @@
                            required data-parsley-error-message="電話番号を正しく入力してください"
                            data-parsley-type="digits"
                            data-parsley-required>
+                    <ul class="transmission_error_flg_list">
+                        <li>Ex.送信エラーの顧客です。</li>
+                    </ul>
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="customer-address">住所</label>
@@ -116,13 +119,16 @@
 </div>
 <div class="contents">
     <fieldset class="col-sm-12 center">
-        <div class="inline-block">
+        <div id="btn-register" class="inline-block">
             <button type="submit" class="btn btn-primary btn-lg">追加</button>
         </div>
-        <div class="inline-block">
-            <button type="submit" class="btn btn-primary btn-lg">削除</button>
+        <div id="btn-modify" class="inline-block" style="display: none;">
+            <button type="submit" class="btn btn-primary btn-lg">更新</button>
         </div>
-        <div class="inline-block">
+        <div id="btn-delete" class="inline-block">
+            <button type="submit" class="btn btn-primary btn-lg" disabled>削除</button>
+        </div>
+        <div id="btn-clear" class="inline-block">
             <button type="submit" class="btn btn-primary btn-lg">クリア</button>
         </div>
     </fieldset>

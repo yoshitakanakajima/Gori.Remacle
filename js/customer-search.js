@@ -3,6 +3,12 @@ $(function(){
         searching: false,
         lengthChange: false,
         info: false,
+        fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            if (aData.transmission_error_flg_list == '1') {
+                $('td', nRow).css('background-color', 'Red');
+            }
+
+        },
         // ajax: {
         //     url: "http://localhost:63342/Gori.Remacle/data/cust01-1.json",
         //     type: "GET",
@@ -38,5 +44,134 @@ $(function(){
         dom:"<'row'<'col-sm-6'l><'col-sm-12 right'p>>" +
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12'i>>"
+    });
+
+    $("#customer-search").on("click", function() {
+        $('#customer-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-2.json").load();
+        $('#customer-list').DataTable().ajax.reload();
+    })
+
+    $("#btn-register > button").on("click", function() {
+        // 操作対象のフォーム要素を取得
+        var $form = $('#customer-form');
+
+        // 送信ボタンを取得
+        var $button = $("#btn-register > button");
+
+        // 送信
+        $.ajax({
+            url: "http://localhost:63342/Gori.Remacle/data/cust01-3.json",
+            type: "POST",
+            data: $form.serialize(),
+            timeout: 10000,  // 単位はミリ秒
+
+            // 送信前
+            beforeSend: function(xhr, settings) {
+                // ボタンを無効化し、二重送信を防止
+                $button.attr('disabled', true);
+            },
+            // 応答後
+            complete: function(xhr, textStatus) {
+                // ボタンを有効化し、再送信を許可
+                $button.attr('disabled', false);
+            },
+
+            // 通信成功時の処理
+            success: function(result, textStatus, xhr) {
+                // 入力値を初期化
+                $form[0].reset();
+
+                if (result["status"] == "0") {
+                    $('.alert-error').show();
+                    $('.alert-success').hide();
+                    $('.alert-error-message').text(result["message"]);
+                } else {
+                    $('.alert-error').hide();
+                    $('.alert-success').show();
+                    $('.alert-success-message').text(result["message"]);
+                }
+
+                console.log('OK');
+            },
+
+            // 通信失敗時の処理
+            error: function(xhr, textStatus, error) {
+                $('.alert-error').show();
+                $('.alert-success').hide();
+                $('.alert-error-message').text(error);
+
+                console.log('NG...');
+            }
+        });
+    })
+
+    $("#btn-modify > button").on("click", function() {
+        $.confirm({
+            title: '顧客情報を更新しますがよろしいですか？',
+            content: '登録を行う場合はクリアボタンを押下してください。',
+            type: 'orange',
+            buttons: {
+                info: {
+                    text: '確認',
+                    btnClass: 'btn-orange',
+                    action: function(){}
+                },
+                danger: {
+                    text: 'キャンセル',
+                },
+            }
+        });
+    })
+
+    $("#btn-delete > button").on("click", function() {
+        $.confirm({
+            title: '顧客情報を削除しますがよろしいですか？',
+            content: '登録を行う場合はクリアボタンを押下してください。',
+            type: 'orange',
+            buttons: {
+                info: {
+                    text: '確認',
+                    btnClass: 'btn-orange',
+                    action: function(){}
+                },
+                danger: {
+                    text: 'キャンセル',
+                },
+            }
+        });
+    });
+
+
+    $("#btn-clear > button").on("click", function() {
+        clearForm('#customer-form');
+        $('#btn-register').show();
+        $('#btn-modify').hide();
+        $('#btn-delete > button').prop("disabled", true);
+    })
+
+
+    $('#customer-list tbody').on("click", "tr", function() {
+        if ($(this).find('.dataTables_empty').length == 0) {
+            var data = $('#customer-list').dataTable().fnGetData(this);
+
+            $('#customer-key').val(data.customer_key_list);
+            $('#customer-name-kana-sei').val(data.customer_name_kana_mei_list);
+            $('#customer-name-kana-mei').val(data.customer_name_kana_sei_list);
+            $('#customer-name-sei').val(data.customer_name_sei_list);
+            $('#customer-name-mei').val(data.customer_name_mei_list);
+            $('#customer-mobile-no').val(data.customer_mobile_no_list);
+            $('#customer-address').val(data.customer_address_list);
+            $('#customer-remarks').val(data.customer_remarks_list);
+
+            if (data.transmission_error_flg_list == '1') {
+                $('.transmission_error_flg_list').show();
+            } else {
+                $('.transmission_error_flg_list').hide();
+            }
+
+            $('#btn-register').hide();
+            $('#btn-modify').show();
+            $('#btn-delete > button').prop("disabled", false);
+        }
     });
 })
