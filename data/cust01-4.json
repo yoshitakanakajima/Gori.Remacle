@@ -1,0 +1,19 @@
+{
+  "property": {
+    "status": "1",
+    "message": "顧客情報が正常に更新されました。"
+  },
+  "data": {
+    "customer_key_list": "000010",
+    "customer_name_seimei_list": "田中 十郎",
+    "customer_mobile_no_list": "09000000000",
+    "customer_name_kana_sei_list": "たなか",
+    "customer_name_kana_mei_list": "じゅうろう",
+    "customer_name_sei_list": "田中",
+    "customer_name_mei_list": "十郎",
+    "customer_address_list": "神奈川県茅ヶ崎市茅ヶ崎2019-5",
+    "customer_remarks_list": "なし",
+    "transmission_error_flg_list": "0"
+  }
+
+}

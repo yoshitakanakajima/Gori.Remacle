@@ -27,9 +27,11 @@ h4 {
 header {
     width: 100%;
 }
-header .navbar {
+header .menubar {
     background-color: #EFC989;
     padding-inline-start: 0px;
+    z-index: 100;
+    position: relative;
 }
 
 footer {

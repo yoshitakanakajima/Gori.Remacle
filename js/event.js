@@ -11,6 +11,24 @@ function clearForm (form) {
 }
 
 
-$('#customer-form').submit(function(event) {
-    console.log('submit!!');
-});
+// $('#customer-form').submit(function(event) {
+//     console.log('submit!!');
+// });
+
+function displayHeaderMessage(status, message) {
+    if (status == "0") {
+        $('.alert-error').show();
+        $('.alert-success').hide();
+        $('.alert-error-message').text(message);
+    } else {
+        $('.alert-error').hide();
+        $('.alert-success').show();
+        $('.alert-success-message').text(message);
+    }
+}
+
+function displayHeaderErrorMessage(status, message) {
+    $('.alert-error').show();
+    $('.alert-success').hide();
+    $('.alert-error-message').text(message);
+}
