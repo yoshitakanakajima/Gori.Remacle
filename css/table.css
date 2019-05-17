@@ -4,3 +4,11 @@ table.dataTable.no-footer {
 .dataTables_paginate {
     padding-bottom: 0.5em;
 }
+
+#address-list_wrapper {
+    border: 1px #ed9c28 solid;
+}
+table#address-list {
+    border: 0px #CCCCCC solid;
+
+}

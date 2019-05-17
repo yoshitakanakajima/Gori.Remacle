@@ -23,6 +23,10 @@ h1, h2, h3, h4, h5, h6 {
 h4 {
     font-size: 17.5px;
 }
+.inline-header {
+    position: absolute;
+    margin: 12px 0;
+}
 
 header {
     width: 100%;
@@ -207,6 +211,7 @@ textarea.form-controls {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
+    color: #333333;
     font-size: 14px;
     font-weight: normal;
     line-height: 1.428571429;
@@ -228,9 +233,11 @@ textarea.form-controls {
     background-color: #EFC989;
     border-color: #f0ad4e;
 }
-.btn-primary:hover {
-    background-color:#ed9c28;
-    border-color:#d58512
+.btn-primary:hover,
+.btn-primary:active {
+    color: #333333 !important;
+    background-color:#ed9c28 !important;
+    border-color:#d58512 !important;
 }
 .btn-primary:disabled {
     background-image: none;
@@ -244,6 +251,10 @@ textarea.form-controls {
     font-size: 18px;
     line-height: 1.33;
     border-radius: 6px;
+}
+
+#address-init-button {
+    margin-left: 88%;
 }
 
 .col-sm-12 {
@@ -267,4 +278,8 @@ textarea.form-controls {
 }
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
     float: left;
+}
+
+.contents-border {
+    border-top: 3px solid #ccc;
 }
