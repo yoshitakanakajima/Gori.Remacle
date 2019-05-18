@@ -12,9 +12,6 @@ $(function(){
         ajax: {
             url: "http://localhost:63342/Gori.Remacle/data/cust01-1.json",
             type: "POST",
-            data: function (d) {
-                d.keyword = $('#keyword').val();
-            },
             dataSrc: ''
         },
         columns: [
@@ -57,20 +54,68 @@ $(function(){
             "<'row'<'col-sm-12'i>>"
     });
 
-    $('#customer-form').parsley().on('field:validated', function() {
-        //alert($('.parsley-error').length);
-        if ($('.parsley-error').length > 0) {
-            $('#btn-register > button').prop("disabled", true);
-            $('#btn-modify > button').prop("disabled", true);
-        } else {
-            $('#btn-register > button').prop("disabled", false);
-            $('#btn-modify > button').prop("disabled", false);
-        }
-    })
+    $('#search-list').DataTable({
+        searching: false,
+        lengthChange: false,
+        info: false,
+        fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            if (aData.transmission_error_flg_list == '1') {
+                $('td', nRow).css('background-color', 'Red');
+            }
 
-    $("#customer-search").on("click", function() {
-        $('#customer-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-2.json").load();
-        $('#customer-list').DataTable().ajax.reload();
+        },
+        ajax: {
+            url: "http://localhost:63342/Gori.Remacle/data/cust01-1.json",
+            type: "POST",
+            data: function (d) {
+                d.keyword = $('#keyword').val();
+            },
+            dataSrc: ''
+        },
+        columns: [
+            {data: "customer_key_list"},
+            {data: "customer_mobile_no_list"},
+            {data: "customer_name_seimei_list"},
+            {data: "customer_name_kana_sei_list"},
+            {data: "customer_name_kana_mei_list"},
+            {data: "customer_name_sei_list"},
+            {data: "customer_name_mei_list"},
+            {data: "customer_address_list"},
+            {data: "customer_remarks_list"},
+            {data: "transmission_error_flg_list"},
+        ],
+        columnDefs: [
+            {targets: [3], visible: false},
+            {targets: [4], visible: false},
+            {targets: [5], visible: false},
+            {targets: [6], visible: false},
+            {targets: [7], visible: false},
+            {
+                targets: [8],
+                visible: true,
+                sWidth: "300px"
+            },
+            {targets: [9], visible: false},
+            {
+                targets: [10],
+                data: null,
+                visible: true,
+                sWidth: "60px",
+                defaultContent: "<button type=\"submit\" class=\"btn btn-primary btn-xs\">追加</button>"
+            },
+        ],
+        language: {
+            url: "http://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Japanese.json"
+        },
+        dom:"<'row'<'col-sm-6'l><'col-sm-12 right'p>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12'i>>"
+    });
+
+    $("#search-button").on("click", function() {
+        $('#search-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-2.json").load();
+        $('#search-list').DataTable().ajax.reload();
+        return false;
     })
 
     $("#btn-register > button").on("click", function() {
@@ -180,12 +225,15 @@ $(function(){
         if ($(this).find('.dataTables_empty').length == 0) {
             var data = $('#address-list').dataTable().fnGetData(this);
 
-            setCustomerForm(data);
-
-            $('#btn-register').hide();
-            $('#btn-modify').show();
-            $('#btn-delete > button').prop("disabled", false);
+            console.log("宛先一覧から削除しました。");
         }
     });
 
+    $('#search-list tbody').on("click", "button", function() {
+        if ($(this).find('.dataTables_empty').length == 0) {
+            var data = $('#search-list').dataTable().fnGetData(this);
+
+            console.log("宛先一覧へ追加しました。");
+        }
+    });
 })

@@ -115,6 +115,9 @@ textarea.form-controls {
 .center {
     text-align: center;
 }
+.right {
+    text-align: right;
+}
 
 .inline-block {
     display: inline-block;
@@ -246,16 +249,26 @@ textarea.form-controls {
 }
 
 .btn-lg {
-    width: 120px;
+    /*width: 120px;*/
     padding: 10px 16px;
     font-size: 18px;
     line-height: 1.33;
     border-radius: 6px;
 }
 
+.btn-right {
+    margin-top: .5rem;
+    margin-left: 84%;
+}
+
+.input-group-btn {
+    margin-left: 10px;
+}
+
 #address-init-button {
     margin-left: 88%;
 }
+
 
 .col-sm-12 {
     width: 100%;

@@ -5,10 +5,10 @@ table.dataTable.no-footer {
     padding-bottom: 0.5em;
 }
 
-#address-list_wrapper {
-    border: 1px #ed9c28 solid;
+#address-list_wrapper,
+#search-list {
+    border: 1px #ed9c28 solid !important;
 }
 table#address-list {
     border: 0px #CCCCCC solid;
-
 }

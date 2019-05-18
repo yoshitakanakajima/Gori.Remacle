@@ -51,43 +51,64 @@
     </div>
     <div class="main">
         <fieldset>
-            <table id="customer-list" class="datatables display">
-                <thead>
-                <tr>
-                    <th>顧客番号</th>
-                    <th>電話番号</th>
-                    <th>姓名</th>
-                    <th>姓（かな）</th>
-                    <th>名（かな）</th>
-                    <th>姓</th>
-                    <th>名</th>
-                    <th>住所</th>
-                    <th>備考</th>
-                    <th>送信エラーフラグ</th>
-                    <th></th>
-                </tr>
-                </thead>
-            </table>
+            <legend>検索して追加</legend>
+            <form id="search-form" action="#" data-parsley-validate>
+                <div class="control-group">
+                    <label class="sr-only" for="keyword">検索条件</label>
+                    <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search">
+                </div>
+                <button id="search-button" type="submit" class="btn btn-primary btn-lg">検索</button>
+                <table id="search-list" class="datatables display">
+                    <thead>
+                    <tr>
+                        <th>顧客番号</th>
+                        <th>電話番号</th>
+                        <th>姓名</th>
+                        <th>姓（かな）</th>
+                        <th>名（かな）</th>
+                        <th>姓</th>
+                        <th>名</th>
+                        <th>住所</th>
+                        <th>備考</th>
+                        <th>送信エラーフラグ</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
         </fieldset>
     </div>
 </div>
 <div class="contents">
-    <fieldset class="col-sm-12 center">
-        <div id="btn-register" class="inline-block">
-            <button type="submit" class="btn btn-primary btn-lg">追加</button>
-        </div>
-        <div id="btn-modify" class="inline-block" style="display: none;">
-            <button type="submit" class="btn btn-primary btn-lg">更新</button>
-        </div>
-        <div id="btn-delete" class="inline-block">
-            <button type="submit" class="btn btn-primary btn-lg" disabled>削除</button>
-        </div>
-        <div id="btn-clear" class="inline-block">
-            <button type="submit" class="btn btn-primary btn-lg">クリア</button>
-        </div>
-    </fieldset>
+    <form id="phone-form" action="#">
+        <fieldset>
+            <legend>電話番号直接入力</legend>
+            <textarea name="phone-list" class="form-control" rows="6"></textarea>
+            <button type="submit" class="btn btn-primary btn-lg btn-right">電話番号を追加</button>
+        </fieldset>
+    </form>
+</div>
+<div class="contents">
+    <form id="file_form" action="#">
+        <fieldset>
+            <legend>ファイルから追加</legend>
+            <input id="address-file" type="file" class="form-control" style="display: none;">
+            <div class="input-group">
+                <input type="text" id="file-name" class="form-control" placeholder="select file...">
+                <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('input[id=address-file]').click();">参照</button></span>
+                <span class="input-group-btn"><button type="button" class="btn btn-primary">追加</button></span>
+            </div>
+        </fieldset>
+    </form>
 </div>
 
 <div id="footer-outer"></div>
+
+<script src="js/address-list.js"></script>
+<script>
+    $('input[id=address-file]').change(function() {
+        $('#file-name').val($(this).val());
+    });
+</script>
 </body>
 </html>
