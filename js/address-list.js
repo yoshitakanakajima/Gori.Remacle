@@ -1,5 +1,5 @@
 $(function(){
-    $('#address-list').DataTable({
+    var address_table = $('#address-list').DataTable({
         searching: false,
         lengthChange: false,
         info: false,
@@ -111,6 +111,15 @@ $(function(){
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12'i>>"
     });
+
+    $('#search-form').parsley().on('field:validated', function() {
+        //alert($('.parsley-error').length);
+        if ($('.parsley-error').length > 0) {
+            $('#search-button').prop("disabled", true);
+        } else {
+            $('#search-button').prop("disabled", false);
+        }
+    })
 
     $("#search-button").on("click", function() {
         $('#search-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-2.json").load();
@@ -231,9 +240,47 @@ $(function(){
 
     $('#search-list tbody').on("click", "button", function() {
         if ($(this).find('.dataTables_empty').length == 0) {
-            var data = $('#search-list').dataTable().fnGetData(this);
+            var data = $('#search-list').dataTable().fnGetData("#search-list > tbody > tr");
 
-            console.log("宛先一覧へ追加しました。");
+            console.log("宛先一覧へ追加しました。:" + data.customer_key_list);
+
+            var filterData = $('#address-list').DataTable().column(1).data().filter(function (value, index) {
+                return value === data.customer_mobile_no_list ? true : false;
+            });
+
+            if (filterData.length > 0) {
+                $.confirm({
+                    title: '宛先一覧へ追加',
+                    content: '電話番号が重複している顧客を追加しようとしています。よろしいですか。',
+                    type: 'orange',
+                    buttons: {
+                        info: {
+                            text: '確認',
+                            btnClass: 'btn-orange',
+                            action: function(){
+                                var selectedRow = [
+                                    {
+                                        "customer_key_list": data.customer_key_list,
+                                        "customer_mobile_no_list": data.customer_mobile_no_list,
+                                        "customer_name_seimei_list": data.customer_name_seimei_list,
+                                        "customer_name_kana_sei_list": data.customer_name_kana_sei_list,
+                                        "customer_name_kana_mei_list": data.customer_name_kana_mei_list,
+                                        "customer_name_sei_list": data.customer_name_sei_list,
+                                        "customer_name_mei_list": data.customer_name_mei_list,
+                                        "customer_address_list": data.customer_address_list,
+                                        "customer_remarks_list": data.customer_remarks_list,
+                                        "transmission_error_flg_list": data.transmission_error_flg_list,
+                                    }
+                                ]
+                                $('#address-list').dataTable().fnAddData(selectedRow);
+                            }
+                        },
+                        danger: {
+                            text: 'キャンセル',
+                        },
+                    }
+                })
+            }
         }
     });
 })

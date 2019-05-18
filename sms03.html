@@ -53,11 +53,15 @@
         <fieldset>
             <legend>検索して追加</legend>
             <form id="search-form" action="#" data-parsley-validate>
-                <div class="control-group">
+                <div class="input-group">
                     <label class="sr-only" for="keyword">検索条件</label>
-                    <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search">
+                    <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search"
+                           data-parsley-trigger="keyup focusout change input"
+                           data-parsley-required
+                           data-parsley-errors-messages-disabled>
+                    <span class="input-group-btn">
+                    <button id="search-button" type="submit" class="btn btn-primary btn-lg">検索</button></span>
                 </div>
-                <button id="search-button" type="submit" class="btn btn-primary btn-lg">検索</button>
                 <table id="search-list" class="datatables display">
                     <thead>
                     <tr>
@@ -95,8 +99,8 @@
             <input id="address-file" type="file" class="form-control" style="display: none;">
             <div class="input-group">
                 <input type="text" id="file-name" class="form-control" placeholder="select file...">
-                <span class="input-group-btn"><button type="button" class="btn btn-primary" onclick="$('input[id=address-file]').click();">参照</button></span>
-                <span class="input-group-btn"><button type="button" class="btn btn-primary">追加</button></span>
+                <span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg" onclick="$('input[id=address-file]').click();">参照</button></span>
+                <span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg">追加</button></span>
             </div>
         </fieldset>
     </form>

@@ -79,6 +79,10 @@ textarea.form-controls {
     height: auto;
 }
 
+input[type="text"] {
+    height: 45px;
+}
+
 .alert {
     padding: 8px 35px 8px 14px;
     margin-bottom: 20px;
@@ -195,6 +199,11 @@ textarea.form-controls {
     -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
 }
+.input-group > .controls,
+.input-group > ul {
+    width: 90%;
+}
+
 .form-controls {
     padding: 0;
 }
@@ -245,8 +254,10 @@ textarea.form-controls {
 .btn-primary:disabled {
     background-image: none;
     background-color: #EFC989;
-    border-color: #f0ad4e;
+    border-color: #f0ad4e !important;
+    color: #333333;
 }
+
 
 .btn-lg {
     /*width: 120px;*/
