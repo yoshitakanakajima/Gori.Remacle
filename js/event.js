@@ -11,10 +11,6 @@ function clearForm (form) {
 }
 
 
-// $('#customer-form').submit(function(event) {
-//     console.log('submit!!');
-// });
-
 function displayHeaderMessage(status, message) {
     if (status == "0") {
         $('.alert-error').show();

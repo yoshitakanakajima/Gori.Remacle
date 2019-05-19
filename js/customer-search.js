@@ -1,5 +1,5 @@
 $(function(){
-    $('.datatables').DataTable({
+    $('#customer-list').DataTable({
         searching: false,
         lengthChange: false,
         info: false,

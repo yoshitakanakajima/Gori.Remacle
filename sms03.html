@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Remacle | テンプレート設定(宛先追加)</title>
+
+    <link rel="import" href="common/style.html">
+    <link rel="import" href="common/script.html">
+</head>
+<body>
+<div id="header-outer"></div>
+
+<div class="contents">
+    <div class="main">
+        <fieldset>
+            <h2 class="inline-header">宛先一覧</h2>
+            <button id="address-init-button" type="submit" class="btn btn-primary btn-lg">宛先初期化</button>
+        </fieldset>
+        <fieldset>
+            <table id="address-list" class="datatables display">
+                <thead>
+                    <tr>
+                        <th>顧客番号</th>
+                        <th>電話番号</th>
+                        <th>姓名</th>
+                        <th>姓（かな）</th>
+                        <th>名（かな）</th>
+                        <th>姓</th>
+                        <th>名</th>
+                        <th>住所</th>
+                        <th>備考</th>
+                        <th>送信エラーフラグ</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </fieldset>
+    </div>
+    <div class="main">
+        <fieldset class="col-sm-12 center">
+            <div id="address_add_button" class="inline-block">
+                <button type="submit" class="btn btn-primary btn-block">宛先一覧を追加</button>
+            </div>
+            <div id="address_cancel_button" class="inline-block">
+                <button type="submit" class="btn btn-primary btn-block">キャンセル</button>
+            </div>
+        </fieldset>
+    </div>
+    <div class="main">
+        <hr class="contents-border">
+    </div>
+    <div class="main">
+        <fieldset>
+            <legend>検索して追加</legend>
+            <form id="search-form" action="#" data-parsley-validate>
+                <div class="input-group">
+                    <label class="sr-only" for="keyword">検索条件</label>
+                    <input type="text" class="controls font-awesome" id="keyword" placeholder="&#xf002; Search"
+                           data-parsley-trigger="keyup focusout change input"
+                           data-parsley-required
+                           data-parsley-errors-messages-disabled>
+                    <span class="input-group-btn">
+                    <button id="search-button" type="submit" class="btn btn-primary btn-lg">検索</button></span>
+                </div>
+                <table id="search-list" class="datatables display">
+                    <thead>
+                    <tr>
+                        <th>顧客番号</th>
+                        <th>電話番号</th>
+                        <th>姓名</th>
+                        <th>姓（かな）</th>
+                        <th>名（かな）</th>
+                        <th>姓</th>
+                        <th>名</th>
+                        <th>住所</th>
+                        <th>備考</th>
+                        <th>送信エラーフラグ</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                </table>
+            </form>
+        </fieldset>
+    </div>
+</div>
+<div class="contents">
+    <form id="phone-form" action="#">
+        <fieldset>
+            <legend>電話番号直接入力</legend>
+            <textarea id="phone-list" name="phone-list" class="form-control" rows="6"></textarea>
+            <button id="phone-add-button" type="submit" class="btn btn-primary btn-lg btn-right">電話番号を追加</button>
+        </fieldset>
+    </form>
+</div>
+<div class="contents">
+    <form id="file_form" action="#">
+        <fieldset>
+            <legend>ファイルから追加</legend>
+            <input id="address-file" type="file" class="form-control" style="display: none;">
+            <div class="input-group">
+                <input type="text" id="file-name" class="form-control" placeholder="select file...">
+                <span class="input-group-btn"><button id="file-select-button" type="button" class="btn btn-primary btn-lg" onclick="$('input[id=address-file]').click();">参照</button></span>
+                <span class="input-group-btn"><button id="file-add-button" type="button" class="btn btn-primary btn-lg">追加</button></span>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+<div id="footer-outer"></div>
+
+<script src="js/address-list.js"></script>
+<script>
+    $('input[id=address-file]').change(function() {
+        $('#file-name').val($(this).val());
+    });
+</script>
+</body>
+</html>
