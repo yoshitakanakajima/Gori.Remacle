@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Remacle | アカウント管理</title>
+
+    <link rel="import" href="common/style.html">
+    <link rel="import" href="common/script.html">
+</head>
+<body>
+<div id="header-outer"></div>
+
+<div class="contents">
+    <div class="main">
+        <fieldset>
+            <legend>アカウント一覧</legend>
+            <table id="user-list" class="datatables display">
+                <thead>
+                    <tr>
+                        <th>自ユーザーフラグ</th>
+                        <th>ユーザーNo</th>
+                        <th>ログインID</th>
+                        <th>なまえ</th>
+                        <th>Email</th>
+                        <th>権限</th>
+                        <th></th>
+                    </tr>
+                </thead>
+            </table>
+        </fieldset>
+    </div>
+</div>
+<div class="contents admin-contents">
+    <form id="company-form" action="#">
+        <fieldset>
+            <legend>事業所情報変更</legend>
+            <div class="form-group col-sm-12">
+                <label for="company-name" class="col-md-2">事業者名</label>
+                <input type="text" class="form-controls col-md-10" id="company-name" placeholder=""
+                       data-parsley-trigger="keyup focusout change input"
+                       data-parsley-error-message="事業者名を入力してください"
+                       maxlength="50"
+                       data-parsley-maxlength="50"
+                       data-parsley-required>
+            </div>
+            <div class="form-group col-sm-12">
+                <label for="company-mobile-no" class="col-md-2">事業者電話番号</label>
+                <input type="text" class="form-controls col-md-10" id="company-mobile-no" placeholder=""
+                       data-parsley-trigger="keyup focusout change input"
+                       data-parsley-error-message="事業者名を入力してください"
+                       maxlength="13"
+                       data-parsley-maxlength="13"
+                       data-parsley-required>
+            </div>
+            <button id="company-info-update-button" type="submit" class="btn btn-primary btn-lg btn-right">事業者情報変更</button>
+        </fieldset>
+    </form>
+</div>
+<div class="contents admin-contents">
+    <fieldset>
+        <legend>カード情報変更</legend>
+        <div class="form-group col-sm-12">
+            <label class="col-md-4">カードを情報変更します</label>
+            <button id="card-info-update-button" type="submit" class="btn btn-primary btn-lg btn-lg">事業者情報変更</button>
+        </div>
+    </fieldset>
+</div>
+<div class="contents admin-contents">
+    <fieldset>
+        <legend>オプション申し込み</legend>
+        <div class="form-group col-sm-12">
+            <label class="col-md-4">オプション機能を申し込みます</label>
+            <button id="option_req_button" type="submit" class="btn btn-primary btn-lg btn-lg">オプション申し込み</button>
+        </div>
+    </fieldset>
+</div>
+
+<div id="footer-outer"></div>
+
+<script src="js/user-list.js"></script>
+</body>
+</html>
