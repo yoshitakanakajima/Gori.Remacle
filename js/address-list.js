@@ -195,8 +195,7 @@ $(function(){
 
     $('#address-list tbody').on("click", "button", function() {
         if ($(this).find('.dataTables_empty').length == 0) {
-            var data = $('#address-list').dataTable().fnGetData(this);
-
+            $('#address-list').DataTable().row($(this).parents('tr')).remove().draw();
             console.log("宛先一覧から削除しました。");
         }
     });
