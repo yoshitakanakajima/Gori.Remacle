@@ -87,8 +87,8 @@
     <form id="phone-form" action="#">
         <fieldset>
             <legend>電話番号直接入力</legend>
-            <textarea name="phone-list" class="form-control" rows="6"></textarea>
-            <button type="submit" class="btn btn-primary btn-lg btn-right">電話番号を追加</button>
+            <textarea id="phone-list" name="phone-list" class="form-control" rows="6"></textarea>
+            <button id="phone-add-button" type="submit" class="btn btn-primary btn-lg btn-right">電話番号を追加</button>
         </fieldset>
     </form>
 </div>
@@ -99,8 +99,8 @@
             <input id="address-file" type="file" class="form-control" style="display: none;">
             <div class="input-group">
                 <input type="text" id="file-name" class="form-control" placeholder="select file...">
-                <span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg" onclick="$('input[id=address-file]').click();">参照</button></span>
-                <span class="input-group-btn"><button type="button" class="btn btn-primary btn-lg">追加</button></span>
+                <span class="input-group-btn"><button id="file-select-button" type="button" class="btn btn-primary btn-lg" onclick="$('input[id=address-file]').click();">参照</button></span>
+                <span class="input-group-btn"><button id="file-add-button" type="button" class="btn btn-primary btn-lg">追加</button></span>
             </div>
         </fieldset>
     </form>

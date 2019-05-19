@@ -1,5 +1,5 @@
 $(function(){
-    var address_table = $('#address-list').DataTable({
+    $('#address-list').DataTable({
         searching: false,
         lengthChange: false,
         info: false,
@@ -53,6 +53,11 @@ $(function(){
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12'i>>"
     });
+
+    $("#address-init-button").on("click", function() {
+        $('#address-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-1.json").load();
+        $('#address-list').DataTable().ajax.reload();
+    })
 
     $('#search-list').DataTable({
         searching: false,
@@ -127,106 +132,64 @@ $(function(){
         return false;
     })
 
-    $("#btn-register > button").on("click", function() {
-        // 操作対象のフォーム要素を取得
-        var $form = $('#customer-form');
+    $("#phone-add-button").on("click", function() {
+        var textarea = $('#phone-list').val();
 
-        // 送信ボタンを取得
-        var $button = $("#btn-register > button");
+        if (textarea == '') {
+            displayHeaderMessage("0", "電話番号が未入力です。");
+            return;
+        }
 
-        // 送信
-        $.ajax({
-            url: "http://localhost:63342/Gori.Remacle/data/cust01-3.json",
-            type: "POST",
-            data: $form.serialize(),
-            timeout: 10000,  // 単位はミリ秒
+        //改行をカンマに置換
+        var str = textarea.replace(/\r|\n|\r\n/g, ',');
 
-            // 送信前
-            beforeSend: function(xhr, settings) {
-                // ボタンを無効化し、二重送信を防止
-                $button.attr('disabled', true);
-            },
-            // 応答後
-            complete: function(xhr, textStatus) {
-                // ボタンを有効化し、再送信を許可
-                $button.attr('disabled', false);
-            },
+        //スペースをカンマに置換
+        str = str.replace(/\s+/g, ',');
 
-            // 通信成功時の処理
-            success: function(result, textStatus, xhr) {
-                // 入力値を初期化
-                $form[0].reset();
+        var phoneList = str.split(',');
 
-                displayHeaderMessage(result["status"], result["message"]);
-
-            },
-
-            // 通信失敗時の処理
-            error: function(xhr, textStatus, error) {
-                displayHeaderErrorMessage(textStatus, error)
+        $.each(phoneList, function (i, value) {
+            if(!isPhoneNember(value)) {
+                displayHeaderMessage("0", "電話番号形式が不正です。");
+                return;
             }
         });
     })
 
-    $("#btn-modify > button").on("click", function() {
-        $.confirm({
-            title: '顧客情報を更新しますがよろしいですか？',
-            content: '登録を行う場合はクリアボタンを押下してください。',
-            type: 'orange',
-            buttons: {
-                info: {
-                    text: '確認',
-                    btnClass: 'btn-orange',
-                    action: function(){
-                        // 操作対象のフォーム要素を取得
-                        var $form = $('#customer-form');
+    $("#file-add-button").on("click", function() {
+        const ERROR_MSG = "追加に失敗した宛先が存在します。全:(__total__) 成功:(__success__) 失敗:(__error__）";
+        $.ajax({
+            url: "http://localhost:63342/Gori.Remacle/data/sms03-5.json",
+            type: "POST",
+            data: {
+                "file": $('#file-name').val()
+            },
+            timeout: 10000,  // 単位はミリ秒
+            dataType: "json",
+            // 通信成功時の処理
+            success: function (result, textStatus, xhr) {
+                console.log(textStatus);
+                var customerList = result["data"];
 
-                        // 送信ボタンを取得
-                        var $button = $("#btn-modify > button");
+                if (result["property"]["error"] > 0) {
+                    errorMsg = ERROR_MSG.replace("__total__", result["property"]["total"]);
+                    errorMsg = errorMsg.replace("__success__", result["property"]["success"]);
+                    errorMsg = errorMsg.replace("__error__", result["property"]["error"]);
+                    displayHeaderMessage("0", errorMsg);
+                }
 
-                        // 送信
-                        $.ajax({
-                            url: "http://localhost:63342/Gori.Remacle/data/cust01-4.json",
-                            type: "POST",
-                            data: $form.serialize(),
-                            timeout: 10000,  // 単位はミリ秒
+                $.each(customerList, function (i, data) {
+                    console.log(data);
+                    $('#address-list').dataTable().fnAddData(data);
+                })
+            },
 
-                            // 送信前
-                            beforeSend: function(xhr, settings) {
-                                // ボタンを無効化し、二重送信を防止
-                                $button.attr('disabled', true);
-                            },
-                            // 応答後
-                            complete: function(xhr, textStatus) {
-                                // ボタンを有効化し、再送信を許可
-                                $button.attr('disabled', false);
-                            },
-
-                            // 通信成功時の処理
-                            success: function(result, textStatus, xhr) {
-                                var data = result.data;
-                                // レスポンスの更新データをFormにセット
-                                setCustomerForm(data);
-
-                                displayHeaderMessage(result["property"]["status"], result["property"]["message"]);
-
-                                $('#customer-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/cust01-2.json").load();
-                                $('#customer-list').DataTable().ajax.reload();
-
-                            },
-
-                            // 通信失敗時の処理
-                            error: function(xhr, textStatus, error) {
-                                displayHeaderErrorMessage(textStatus, error)
-                            }
-                        });
-
-                    }
-                },
-                danger: {
-                    text: 'キャンセル',
-                },
+            // 通信失敗時の処理
+            error: function (xhr, textStatus, error) {
+                console.log(error);
+                displayHeaderErrorMessage(textStatus, error)
             }
+
         });
     });
 
@@ -284,3 +247,4 @@ $(function(){
         }
     });
 })
+

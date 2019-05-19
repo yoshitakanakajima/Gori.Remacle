@@ -2,7 +2,7 @@
   {
     "customer_key_list": "000001",
     "customer_name_seimei_list": "田中 太郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "たろう",
     "customer_name_sei_list": "田中",
@@ -14,7 +14,7 @@
   {
     "customer_key_list": "000002",
     "customer_name_seimei_list": "田中 次郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "じろう",
     "customer_name_sei_list": "田中",
@@ -26,7 +26,7 @@
   {
     "customer_key_list": "000003",
     "customer_name_seimei_list": "田中 三郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "さぶろう",
     "customer_name_sei_list": "田中",
@@ -38,7 +38,7 @@
   {
     "customer_key_list": "000004",
     "customer_name_seimei_list": "田中 四郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "しろう",
     "customer_name_sei_list": "田中",
@@ -50,7 +50,7 @@
   {
     "customer_key_list": "000005",
     "customer_name_seimei_list": "田中 五郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "ごろう",
     "customer_name_sei_list": "田中",
@@ -62,7 +62,7 @@
   {
     "customer_key_list": "000006",
     "customer_name_seimei_list": "田中 六郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "ろくろう",
     "customer_name_sei_list": "田中",
@@ -74,7 +74,7 @@
   {
     "customer_key_list": "000007",
     "customer_name_seimei_list": "田中 七郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "しちろう",
     "customer_name_sei_list": "田中",
@@ -86,7 +86,7 @@
   {
     "customer_key_list": "000008",
     "customer_name_seimei_list": "田中 八郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "はちろう",
     "customer_name_sei_list": "田中",
@@ -98,7 +98,7 @@
   {
     "customer_key_list": "000009",
     "customer_name_seimei_list": "田中 九郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "くろう",
     "customer_name_sei_list": "田中",
@@ -110,7 +110,7 @@
   {
     "customer_key_list": "000010",
     "customer_name_seimei_list": "田中 十郎",
-    "customer_mobile_no_list": "09000000000",
+    "customer_mobile_no_list": "090-0000-0000",
     "customer_name_kana_sei_list": "たなか",
     "customer_name_kana_mei_list": "じゅうろう",
     "customer_name_sei_list": "田中",
@@ -122,7 +122,7 @@
   {
     "customer_key_list": "000011",
     "customer_name_seimei_list": "佐藤 一郎",
-    "customer_mobile_no_list": "08000000000",
+    "customer_mobile_no_list": "080-0000-0000",
     "customer_name_kana_sei_list": "さとう",
     "customer_name_kana_mei_list": "いちろう",
     "customer_name_sei_list": "佐藤",
@@ -134,7 +134,7 @@
   {
     "customer_key_list": "000012",
     "customer_name_seimei_list": "鈴木 一郎",
-    "customer_mobile_no_list": "07000000000",
+    "customer_mobile_no_list": "070-0000-0000",
     "customer_name_kana_sei_list": "すずき",
     "customer_name_kana_mei_list": "いちろう",
     "customer_name_sei_list": "すずき",
