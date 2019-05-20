@@ -9,7 +9,8 @@
       "user_id": "00001",
       "user_name": "山田",
       "user_email": "yamada@example.com",
-      "permission_cd": "管理者"
+      "permission_cd": "管理者",
+      "sort_no": "1"
     },
     {
       "own_user_flg": "0",
@@ -17,7 +18,8 @@
       "user_id": "00002",
       "user_name": "田中",
       "user_email": "tanaka@example.com",
-      "permission_cd": "オペレーター"
+      "permission_cd": "オペレーター",
+      "sort_no": "2"
     },
     {
       "own_user_flg": "1",
@@ -25,7 +27,17 @@
       "user_id": "00003",
       "user_name": "鈴木",
       "user_email": "suzuki@example.com",
-      "permission_cd": "オペレーター"
+      "permission_cd": "オペレーター",
+      "sort_no": "3"
+    },
+    {
+      "own_user_flg": "",
+      "user_no": "",
+      "user_id": "",
+      "user_name": "",
+      "user_email": "",
+      "permission_cd": "",
+      "sort_no": "4"
     }
   ]
 }

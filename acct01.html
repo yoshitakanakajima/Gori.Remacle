@@ -24,6 +24,7 @@
                         <th>Email</th>
                         <th>権限</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
             </table>
@@ -73,6 +74,102 @@
             <button id="option_req_button" type="submit" class="btn btn-primary btn-lg btn-lg">オプション申し込み</button>
         </div>
     </fieldset>
+</div>
+
+<div id="form" class="modal fade" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered ">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 id="dialogTitle" class="modal-title">登録</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal">
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">ログインID</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-8">
+                                            <input type="text" class="form-control" id="user-id" placeholder="ログインID" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">パスワード</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-8">
+                                            <input type="password" class="form-control" id="password" placeholder="パスワード" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">パスワード(確認)</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-8">
+                                            <input type="text" class="form-control" id="password-comfirm" placeholder="パスワード(確認)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">名前</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-8">
+                                            <input type="text" class="form-control" id="user-name" placeholder="名前">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">email</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-7">
+                                            <input type="text" class="form-control" id="user-email" placeholder="email">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group modal-form-group">
+                                    <div class="form-inline">
+                                        <div class="label-group col-sm-4">
+                                            <label class="control-label">権限</label>
+                                            <span class="badge badge-danger pull-right">必須</span>
+                                        </div>
+                                        <div class="input-group col-sm-7">
+                                            <select id="permission-cd" class="form-control" >
+                                                <option value="0">管理者</option>
+                                                <option value="1">オペレーター</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div id="inputError" class="pull-left" style="color:red; padding:5px;"></div>
+                <button id="sendRegistButton" type="button" class="btn btn-primary"><i class="fa fa-check"></i>&nbsp;OK</button>
+                <button id="sendUpdateButton" type="button" class="btn btn-primary"><i class="fa fa-check"></i>&nbsp;修正</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-remove"></i>&nbsp;キャンセル</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="footer-outer"></div>

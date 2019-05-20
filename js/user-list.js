@@ -3,6 +3,7 @@ $(function(){
         searching: false,
         lengthChange: false,
         info: false,
+        order: [[7, "asc"]],
         fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
             // console.log(nRow);
             // console.log(aData);
@@ -23,17 +24,19 @@ $(function(){
             {data: "user_name"},
             {data: "user_email"},
             {data: "permission_cd"},
+            {data: "sort_no"},
         ],
         columnDefs: [
             {targets: [0], visible: false},
             {targets: [1], visible: false},
+            {targets: [6], visible: false},
             {
-                targets: [6],
+                targets: [7],
                 render: function (data, type, row) {
-                    console.log(data);
-                    console.log(type);
-                    console.log(row);
-                    return '<button type="submit" class="btn btn-primary btn-xs">変更</button>';
+                    // console.log(data);
+                    // console.log(type);
+                    // console.log(row);
+                    return data.user_no == '' ? '<button type="submit" class="btn btn-primary btn-xs user-add-button">追加</button>' : '<button type="submit" class="btn btn-primary btn-xs user-modify-button">変更</button>';
                 },
                 data: null,
                 visible: true,
@@ -48,4 +51,23 @@ $(function(){
             "<'row'<'col-sm-12'tr>>" +
             "<'row'<'col-sm-12'i>>"
     });
+
+    $('#user-list tbody').on("click", "button.user-add-button", function() {
+        // ダイアログ表示
+        $('#form').on('show.bs.modal', function (event) {
+
+            // コントロール制御
+            $("#form #dialogTitle").text("新規登録");
+            $("#form #sendRegistButton").show();
+            $("#form #sendUpdateButton").hide();
+            $("#form #inputNo").prop("disabled", true);
+
+            // フォーカス
+            setTimeout(function(){
+                $("#inputNo").focus();
+            }, 500);
+
+        }).modal("show");
+    });
+
 })
