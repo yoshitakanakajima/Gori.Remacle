@@ -3,12 +3,14 @@ $(function(){
         searching: false,
         lengthChange: false,
         info: false,
-        // fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-        //     if (aData.transmission_error_flg_list == '1') {
-        //         $('td', nRow).css('background-color', 'Red');
-        //     }
-        //
-        // },
+        fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+            // console.log(nRow);
+            // console.log(aData);
+            if (aData.own_user_flg == '0') {
+                $('td > button', nRow).prop("disabled", true);
+            }
+
+        },
         ajax: {
             url: "http://localhost:63342/Gori.Remacle/data/acct01-1.json",
             type: "POST",
@@ -27,10 +29,16 @@ $(function(){
             {targets: [1], visible: false},
             {
                 targets: [6],
+                render: function (data, type, row) {
+                    console.log(data);
+                    console.log(type);
+                    console.log(row);
+                    return '<button type="submit" class="btn btn-primary btn-xs">変更</button>';
+                },
                 data: null,
                 visible: true,
                 sWidth: "60px",
-                defaultContent: "<button type=\"submit\" class=\"btn btn-primary btn-xs\">変更</button>"
+                // defaultContent: "<button type=\"submit\" class=\"btn btn-primary btn-xs\">変更</button>"
             },
         ],
         language: {
