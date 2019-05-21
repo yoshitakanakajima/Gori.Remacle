@@ -82,6 +82,9 @@ textarea.form-controls {
 input[type="text"] {
     height: 45px;
 }
+::placeholder {
+    color: #cdd;
+}
 
 .alert {
     padding: 8px 35px 8px 14px;
@@ -181,6 +184,14 @@ input[type="text"] {
     margin-bottom: 15px;
 }
 
+.modal-form-group {
+    width: 100%;
+}
+
+.form-controls {
+    padding: 0;
+}
+
 .controls, .form-controls {
     display: inline-block;
     width: 95%;
@@ -204,8 +215,11 @@ input[type="text"] {
     width: 90%;
 }
 
-.form-controls {
-    padding: 0;
+.label-group {
+    display: inline-flex;
+}
+.control-label {
+    width: 75%;
 }
 
 .sr-only {
@@ -239,6 +253,12 @@ input[type="text"] {
     -ms-user-select: none;
     -o-user-select: none;
     user-select: none;
+}
+
+.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
 }
 
 .btn-primary {
@@ -281,23 +301,29 @@ input[type="text"] {
 }
 
 
-.col-sm-12 {
+.col-sm-12, .col-md-12 {
     width: 100%;
 }
-.col-sm-6 {
+.col-sm-10, .col-md-10 {
+    width: 82.22222222222222%;
+}
+.col-sm-8, .col-md-8 {
+    width: 62%;
+}
+.col-sm-6, .col-md-6 {
     width: 50%;
 }
-.col-sm-5 {
+.col-sm-5, .col-md-5 {
     width: 41.66666666666667%;
 }
-.col-sm-4 {
+.col-sm-4, .col-md-4 {
     width: 31%;
     /*width: 33.33333333333333%;*/
 }
-.col-sm-3 {
+.col-sm-3, .col-md-3 {
     width: 25%;
 }
-.col-sm-2 {
+.col-sm-2, .col-md-2 {
     width: 16.666666666666664%;
 }
 .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12 {
@@ -306,4 +332,9 @@ input[type="text"] {
 
 .contents-border {
     border-top: 3px solid #ccc;
+}
+
+.badge {
+    margin-left: auto;
+    padding: 0.5em .4em;
 }
