@@ -28,3 +28,7 @@ function displayHeaderErrorMessage(status, message) {
     $('.alert-success').hide();
     $('.alert-error-message').text(message);
 }
+
+function parsley() {
+    
+}

@@ -166,4 +166,108 @@ $(function(){
         });
     });
 
+
+    $("#company-info-update-button").on("click", function () {
+        console.log("事業者情報変更");
+        // 操作対象のフォーム要素を取得
+        var $form = $('#company-form');
+        // 送信ボタンを取得
+        var $button = $("#company-info-update-button");
+
+        // 送信
+        $.ajax({
+            url: "http://localhost:63342/Gori.Remacle/data/acct01-3.json",
+            type: "POST",
+            data: $form.serialize(),
+            timeout: 10000,  // 単位はミリ秒
+
+            // 送信前
+            beforeSend: function(xhr, settings) {
+                // ボタンを無効化し、二重送信を防止
+                $button.attr('disabled', true);
+            },
+            // 応答後
+            complete: function(xhr, textStatus) {
+                // ボタンを有効化し、再送信を許可
+                $button.attr('disabled', false);
+            },
+
+            // 通信成功時の処理
+            success: function(result, textStatus, xhr) {
+                displayHeaderMessage(result["property"]["status"], result["property"]["message"]);
+            },
+
+            // 通信失敗時の処理
+            error: function(xhr, textStatus, error) {
+                displayHeaderErrorMessage(textStatus, error)
+            }
+        });
+    })
+
+    $('#company-form').parsley().on('field:validated', function() {
+        if ($('.parsley-error').length > 0) {
+            $('#company-info-update-button').prop("disabled", true);
+        } else {
+            $('#company-info-update-button').prop("disabled", false);
+        }
+    })
+
+    $("#card-info-update-button").on("click", function () {
+        //FIXME: Stripe APIをコールしてレスポンスJSONを受け取る
+        console.log("Stripe APIをコールしてレスポンスJSONを受け取る");
+
+        // 送信ボタンを取得
+        var $button = $("#card-info-update-button");
+
+        // 送信
+        $.ajax({
+            url: "http://localhost:63342/Gori.Remacle/data/acct01-3.json",
+            type: "POST",
+            data: {"token": "stripeapirespons-token"},
+            timeout: 10000,  // 単位はミリ秒
+
+            // 送信前
+            beforeSend: function(xhr, settings) {
+                // ボタンを無効化し、二重送信を防止
+                $button.attr('disabled', true);
+            },
+            // 応答後
+            complete: function(xhr, textStatus) {
+                // ボタンを有効化し、再送信を許可
+                $button.attr('disabled', false);
+            },
+
+            // 通信成功時の処理
+            success: function(result, textStatus, xhr) {
+                displayHeaderMessage(result["property"]["status"], result["property"]["message"]);
+            },
+
+            // 通信失敗時の処理
+            error: function(xhr, textStatus, error) {
+                displayHeaderErrorMessage(textStatus, error)
+            }
+        });
+
+    })
+
+    $("#option_req_button").on("click", function() {
+        $.confirm({
+            title: '別サイトに遷移しますがよろしいですか？',
+            content: 'OKを押下すると、オプション申し込みサイトへ遷移します。',
+            type: 'orange',
+            buttons: {
+                info: {
+                    text: 'OK',
+                    btnClass: 'btn-orange',
+                    action: function(){
+                        window.location.href = 'https://www.google.com/';
+                    }
+                },
+                danger: {
+                    text: 'キャンセル',
+                },
+            }
+        });
+    });
+
 })
