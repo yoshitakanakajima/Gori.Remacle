@@ -1,4 +1,9 @@
 $(function(){
+    var authority = window.sessionStorage.getItem(['authority']);
+    if (authority != "0") {
+        $(".admin-contents").hide();
+    }
+
     $('#user-list').DataTable({
         searching: false,
         lengthChange: false,

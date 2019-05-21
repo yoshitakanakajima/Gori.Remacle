@@ -1,3 +1,10 @@
+$(function () {
+    //管理者
+    window.sessionStorage.setItem(['authority'],["0"]);
+    //オペレーター
+    // window.sessionStorage.setItem(['authority'],["1"]);
+})
+
 function clearForm (form) {
     $(form)
         .find("input, select, textarea")
