@@ -82,6 +82,9 @@ textarea.form-controls {
 input[type="text"] {
     height: 45px;
 }
+::placeholder {
+    color: #cdd;
+}
 
 .alert {
     padding: 8px 35px 8px 14px;
@@ -216,8 +219,7 @@ input[type="text"] {
     display: inline-flex;
 }
 .control-label {
-    width: 50%;
-    max-width: 50%;
+    width: 75%;
 }
 
 .sr-only {
