@@ -10,8 +10,6 @@ $(function(){
         info: false,
         order: [[7, "asc"]],
         fnRowCallback: function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
-            // console.log(nRow);
-            // console.log(aData);
             if (aData.own_user_flg == '0') {
                 $('td > button', nRow).prop("disabled", true);
             }
@@ -56,24 +54,63 @@ $(function(){
             "<'row'<'col-sm-12'i>>"
     });
 
-    $('#user-list tbody').on("click", "button.user-add-button", function() {
-        // ダイアログ表示
-        $('#form').on('show.bs.modal', function (event) {
+    $('#user-list tbody').on("click", "button", function() {
+        var data = $('#user-list').DataTable().rows($(this).parents('tr')).data()[0];
+        var isReg = $(this).attr('class').indexOf("user-add-button") != -1;
 
-            // コントロール制御
-            $("#form #dialogTitle").text("新規登録");
-            $("#form #regist-button").show();
-            $("#form #update-button").hide();
+        if ($(this).find('.dataTables_empty').length == 0) {
+            // ダイアログ表示
+            $('#form').on('show.bs.modal', function (event) {
+                // 取得したデータのセット
+                $("#user-id").val(data.user_id);
+                $("#user-name").val(data.user_name);
+                $("#user-email").val(data.user_email);
+                $("#permission-cd").val(data.permission_cd);
 
-            // フォーカス
-            setTimeout(function(){
-                $("#user-id").focus();
-            }, 500);
+                // コントロール制御
+                if (isReg) {
+                    $("#form #dialogTitle").text("新規登録");
+                    $("#form #regist-button").show();
+                    $("#form #update-button").hide();
+                } else {
+                    $("#form #dialogTitle").text("更新");
+                    $("#form #regist-button").hide();
+                    $("#form #update-button").show();
 
-        }).modal("show");
+                }
+
+                // フォーカス
+                setTimeout(function(){
+                    $("#user-id").focus();
+                }, 500);
+
+            }).modal("show");
+        }
     });
 
+
+    // $('#user-list tbody').on("click", "button.user-add-button", function() {
+    //     // ダイアログ表示
+    //     $('#form').on('show.bs.modal', function (event) {
+    //         console.log("user-add-button");
+    //         // 入力値を初期化
+    //         clearForm('#form');
+    //
+    //         // コントロール制御
+    //         $("#form #dialogTitle").text("新規登録");
+    //         $("#form #regist-button").show();
+    //         $("#form #update-button").hide();
+    //
+    //         // フォーカス
+    //         setTimeout(function(){
+    //             $("#user-id").focus();
+    //         }, 500);
+    //
+    //     }).modal("show");
+    // });
+
     $("#regist-button").on("click", function () {
+        console.log('click regist-button!');
         $.ajax({
             url: "http://localhost:63342/Gori.Remacle/data/acct01-3.json",
             type: "POST",
@@ -96,6 +133,7 @@ $(function(){
                     // テーブル更新
                     $('#user-list').DataTable().ajax.url("http://localhost:63342/Gori.Remacle/data/acct01-4.json").load();
                     $('#user-list').DataTable().ajax.reload();
+                    displayHeaderMessage("1", message);
                 } else {
                     displayHeaderMessage("0", message);
                 }
@@ -109,31 +147,62 @@ $(function(){
         });
     });
 
-    $('#user-list tbody').on("click", "button.user-modify-button", function() {
-        if ($(this).find('.dataTables_empty').length == 0) {
-            var data = $('#user-list').dataTable().fnGetData("#user-list > tbody > tr");
+    // $('#user-list tbody').on("click", "button.user-modify-button", function() {
+    //     console.log($('#user-list').DataTable().rows($(this).parents('tr')).data());
+    //     if ($(this).find('.dataTables_empty').length == 0) {
+    //
+    //         var data = $('#user-list').DataTable().rows($(this).parents('tr')).data()[0];
+    //         console.log(data.user_id);
+    //
+    //         // ダイアログ表示
+    //         $('#form').on('show.bs.modal', function (event) {
+    //             // 取得したデータのセット
+    //             $("#user-id").val(data.user_id);
+    //             $("#user-name").val(data.user_name);
+    //             $("#user-email").val(data.user_email);
+    //             $("#permission-cd").val(data.permission_cd);
+    //
+    //             // コントロール制御
+    //             $("#form #dialogTitle").text("更新");
+    //             $("#form #regist-button").hide();
+    //             $("#form #update-button").show();
+    //
+    //             // フォーカス
+    //             setTimeout(function(){
+    //                 $("#user-id").focus();
+    //             }, 500);
+    //
+    //         }).modal("show");
+    //     }
+    // });
 
-            // ダイアログ表示
-            $('#form').on('show.bs.modal', function (event) {
-                // 取得したデータのセット
-                $("#user-id").val(data.user_id);
-                $("#user-name").val(data.user_name);
-                $("#user-email").val(data.user_email);
-                $("#permission-cd").val(data.permission_cd);
-
-                // コントロール制御
-                $("#form #dialogTitle").text("更新");
-                $("#form #regist-button").hide();
-                $("#form #update-button").show();
-
-                // フォーカス
-                setTimeout(function(){
-                    $("#user-id").focus();
-                }, 500);
-
-            }).modal("show");
-        }
-    });
+    // $('#user-list tbody').on("click", "button.user-modify-button", function() {
+    //     if ($(this).find('.dataTables_empty').length == 0) {
+    //         console.log("user-modify-button");
+    //
+    //         var data = $('#user-list').dataTable().fnGetData("#user-list > tbody > tr");
+    //
+    //         // ダイアログ表示
+    //         $('#form').on('show.bs.modal', function (event) {
+    //             // 取得したデータのセット
+    //             $("#user-id").val(data.user_id);
+    //             $("#user-name").val(data.user_name);
+    //             $("#user-email").val(data.user_email);
+    //             $("#permission-cd").val(data.permission_cd);
+    //
+    //             // コントロール制御
+    //             $("#form #dialogTitle").text("更新");
+    //             $("#form #regist-button").hide();
+    //             $("#form #update-button").show();
+    //
+    //             // フォーカス
+    //             setTimeout(function(){
+    //                 $("#user-id").focus();
+    //             }, 500);
+    //
+    //         }).modal("show");
+    //     }
+    // });
 
     $("#update-button").on("click", function () {
         $.ajax({

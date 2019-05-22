@@ -79,8 +79,8 @@ textarea.form-controls {
     height: auto;
 }
 
-input[type="text"] {
-    height: 45px;
+input {
+    height: 45px !important;
 }
 ::placeholder {
     color: #cdd;
@@ -182,10 +182,6 @@ input[type="text"] {
 }
 .form-group {
     margin-bottom: 15px;
-}
-
-.modal-form-group {
-    width: 100%;
 }
 
 .form-controls {
@@ -334,7 +330,27 @@ input[type="text"] {
     border-top: 3px solid #ccc;
 }
 
+
+.modal-form-group {
+    width: 100%;
+}
+
+.modal-label-group {
+    display: inline-flex;
+    height: 75px;
+}
+
+/*.modal-input-group {*/
+/*    padding-top: 20px;*/
+/*}*/
+
+.parsley-success {
+    margin-top: 20px;
+}
+
 .badge {
-    margin-left: auto;
+    /*margin-left: auto;*/
+    height: 22px;
+    margin: 17% 0;
     padding: 0.5em .4em;
 }
